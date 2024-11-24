@@ -377,9 +377,18 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="moviepy.decorators.html">moviepy.decorators</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.add_mask_if_none.html">moviepy.decorators.add_mask_if_none</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.apply_to_audio.html">moviepy.decorators.apply_to_audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.apply_to_mask.html">moviepy.decorators.apply_to_mask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.audio_video_effect.html">moviepy.decorators.audio_video_effect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_masks_to_RGB.html">moviepy.decorators.convert_masks_to_RGB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_parameter_to_seconds.html">moviepy.decorators.convert_parameter_to_seconds</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.convert_path_to_string.html">moviepy.decorators.convert_path_to_string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.outplace.html">moviepy.decorators.outplace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.preprocess_args.html">moviepy.decorators.preprocess_args</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.requires_duration.html">moviepy.decorators.requires_duration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.requires_fps.html">moviepy.decorators.requires_fps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moviepy.decorators.use_clip_fps_by_default.html">moviepy.decorators.use_clip_fps_by_default</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="moviepy.tools.html">moviepy.tools</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -541,7 +550,7 @@ document.write(`
 If the angle is not a multiple of 90 (degrees) or <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">translate</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">bg_color</span></code> are not <code class="docutils literal notranslate"><span class="pre">None</span></code>, there will be black borders.
 You can make them transparent with:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">with_add_mask</span><span class="p">()</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">with_mask</span><span class="p">()</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">

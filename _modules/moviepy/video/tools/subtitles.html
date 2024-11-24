@@ -417,15 +417,17 @@ document.write(`
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
-<span class="sd">    &gt;&gt;&gt; from moviepy.video.tools.subtitles import SubtitlesClip</span>
-<span class="sd">    &gt;&gt;&gt; from moviepy.video.io.VideoFileClip import VideoFileClip</span>
-<span class="sd">    &gt;&gt;&gt; generator = lambda text: TextClip(text, font=&#39;Georgia-Regular&#39;,</span>
-<span class="sd">    ...                                   font_size=24, color=&#39;white&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; sub = SubtitlesClip(&quot;subtitles.srt&quot;, generator)</span>
-<span class="sd">    &gt;&gt;&gt; sub = SubtitlesClip(&quot;subtitles.srt&quot;, generator, encoding=&#39;utf-8&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; myvideo = VideoFileClip(&quot;myvideo.avi&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; final = CompositeVideoClip([clip, subtitles])</span>
-<span class="sd">    &gt;&gt;&gt; final.write_videofile(&quot;final.mp4&quot;, fps=myvideo.fps)</span>
+<span class="sd">    .. code:: python</span>
+
+<span class="sd">        from moviepy.video.tools.subtitles import SubtitlesClip</span>
+<span class="sd">        from moviepy.video.io.VideoFileClip import VideoFileClip</span>
+<span class="sd">        generator = lambda text: TextClip(text, font=&#39;Georgia-Regular&#39;,</span>
+<span class="sd">                                        font_size=24, color=&#39;white&#39;)</span>
+<span class="sd">        sub = SubtitlesClip(&quot;subtitles.srt&quot;, generator)</span>
+<span class="sd">        sub = SubtitlesClip(&quot;subtitles.srt&quot;, generator, encoding=&#39;utf-8&#39;)</span>
+<span class="sd">        myvideo = VideoFileClip(&quot;myvideo.avi&quot;)</span>
+<span class="sd">        final = CompositeVideoClip([clip, subtitles])</span>
+<span class="sd">        final.write_videofile(&quot;final.mp4&quot;, fps=myvideo.fps)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -486,7 +488,7 @@ document.write(`
 
             <span class="k">return</span> <span class="n">sub</span>
 
-        <span class="k">def</span> <span class="nf">make_frame</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">frame_function</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
             <span class="n">sub</span> <span class="o">=</span> <span class="n">add_textclip_if_none</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">textclips</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">get_frame</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">if</span> <span class="n">sub</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
 
@@ -494,7 +496,7 @@ document.write(`
             <span class="n">sub</span> <span class="o">=</span> <span class="n">add_textclip_if_none</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">textclips</span><span class="p">[</span><span class="n">sub</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">get_frame</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">if</span> <span class="n">sub</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">]])</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">make_frame</span> <span class="o">=</span> <span class="n">make_frame</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame_function</span> <span class="o">=</span> <span class="n">frame_function</span>
         <span class="n">hasmask</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">make_textclip</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">VideoClip</span><span class="p">(</span><span class="n">make_mask_frame</span><span class="p">,</span> <span class="n">is_mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">hasmask</span> <span class="k">else</span> <span class="kc">None</span>
 
